@@ -1,0 +1,3 @@
+rootProject.name = 'SubwaySurfer'
+include 'yahav.subwaysurfer'
+
