@@ -23,5 +23,6 @@ public class Station {
         public List getCoordinates(){
             return coordinates;
         }
+        
     }
 }
