@@ -3,6 +3,7 @@ package yahav.subwaysurfer;
 import org.junit.Assert;
 import org.junit.Test;
 import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -28,7 +29,6 @@ public class SubwaySurferTest {
         //then
         Assert.assertNotNull(user.features);
         Assert.assertNotNull(user.features.get(0).properties.name);
-        Assert.assertNotNull(user.features.get(0).properties.objectID);
         Assert.assertNotNull(user.features.get(0).geometry.coordinates);
         assertFalse(user.features.isEmpty());
         assertFalse(user.features.get(0).geometry.coordinates.isEmpty());

@@ -10,22 +10,25 @@ public class SubwaySurfer {
         Geometry geometry;
 
     }
+
     static class Properties {
-        int objectID;
+        String objectid;
         String name;
 
-        public int getObjectID() {
-            return objectID;
+        public String getObjectID() {
+            return objectid;
         }
+
         public String getName() {
             return name;
         }
 
     }
+
     static class Geometry {
         List<Double> coordinates;
-        public List getCoordinates()
-        {
+
+        public List getCoordinates() {
             return coordinates;
         }
     }
