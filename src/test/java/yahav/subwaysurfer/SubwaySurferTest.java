@@ -30,6 +30,7 @@ public class SubwaySurferTest {
         Assert.assertNotNull(user.features.get(0).properties.name);
         Assert.assertNotNull(user.features.get(0).properties.objectID);
         Assert.assertNotNull(user.features.get(0).geometry.coordinates);
+        assertFalse(user.features.isEmpty());
         assertFalse(user.features.get(0).geometry.coordinates.isEmpty());
     }
 }
