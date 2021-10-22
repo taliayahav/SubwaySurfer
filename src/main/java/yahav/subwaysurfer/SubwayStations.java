@@ -2,13 +2,12 @@ package yahav.subwaysurfer;
 
 import java.util.List;
 
-public class SubwaySurfer {
-    List<Feature> features;
+public class SubwayStations {
+    List<Station> features;
 
-    public static class Feature {
+    public static class Station {
         Properties properties;
         Geometry geometry;
-
     }
 
     static class Properties {

@@ -13,7 +13,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
-public class SubwaySurferTest {
+public class SubwayStationsTest {
 
 
     @Test
@@ -23,7 +23,7 @@ public class SubwaySurferTest {
         Reader reader = Files.newBufferedReader(Paths.get("subwaystations.json"));
 
         //when
-        SubwaySurfer user = gson.fromJson(reader, SubwaySurfer.class);
+        SubwayStations user = gson.fromJson(reader, SubwayStations.class);
         reader.close();
 
         //then
