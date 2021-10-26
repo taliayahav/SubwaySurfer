@@ -18,17 +18,16 @@ public class StationConnectionsTest {
         //given
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("subwaylines.json"));
-        Reader reader2 = Files.newBufferedReader(Paths.get("subwaystations.json"));
         StationConnections stationConnections = new StationConnections();
         Set<String> expected = new HashSet<String>();
-        expected.add("186");
+        expected.add("128");
+        expected.add("419");
 
         //when
         SubwayLines user = gson.fromJson(reader, SubwayLines.class);
-        SubwayStations user2 = gson.fromJson(reader2, SubwayStations.class);
         reader.close();
 
         //then
-        Assert.assertEquals(expected, stationConnections.getStationLines(user, "55"));
+        Assert.assertEquals(expected, stationConnections.getStationLines(user, "123"));
     }
 }
