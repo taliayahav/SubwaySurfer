@@ -22,9 +22,9 @@ public class SubwayLines {
     List<String> S;
     List<String> W;
     List<String> Z;
-    @SerializedName("6 express")
+    @SerializedName("6 Express")
     List<String> sixExpress;
-    @SerializedName("7 express")
+    @SerializedName("7 Express")
     List<String> sevenExpress;
     @SerializedName("1")
     List<String> one;
