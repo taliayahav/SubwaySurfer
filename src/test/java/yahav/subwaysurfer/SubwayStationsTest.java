@@ -20,17 +20,16 @@ public class SubwayStationsTest {
     public void getStations() throws IOException {
         //given
         Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("subwaystations.json"));
+        Reader reader = Files.newBufferedReader(Paths.get("subwaylines.json"));
 
         //when
-        SubwayStations user = gson.fromJson(reader, SubwayStations.class);
+        SubwayLines user = gson.fromJson(reader, SubwayLines.class);
         reader.close();
 
         //then
-        Assert.assertNotNull(user.features);
-        Assert.assertNotNull(user.features.get(0).properties.name);
-        Assert.assertNotNull(user.features.get(0).geometry.coordinates);
-        assertFalse(user.features.isEmpty());
-        assertFalse(user.features.get(0).geometry.coordinates.isEmpty());
+        Assert.assertEquals("55", user.A.get(0));
+        Assert.assertNotNull(user.E);
+        Assert.assertNotNull(user.E.get(0));
+        assertFalse(user.E.isEmpty());
     }
 }

@@ -36,7 +36,13 @@ public class StationConnections {
         lines.add(subwayLines.seven);
         for(List<String> line: lines){
             if(line.contains(station)){
-                linesWithStation.addAll(line);
+                int index=line.indexOf(station);
+                if(index > 0){
+                    linesWithStation.add(line.get(index-1));
+                }
+                if(index < line.size() - 1){
+                    linesWithStation.add(line.get(index + 1));
+                }
             }
         }
         linesWithStation.remove(station);
