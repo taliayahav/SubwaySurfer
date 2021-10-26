@@ -21,7 +21,6 @@ public class SubwayStations {
         public String getName() {
             return name;
         }
-
     }
 
     static class Geometry {
