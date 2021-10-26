@@ -1,11 +1,13 @@
 package yahav.subwaysurfer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class StationConnections {
-    public List<String> getStationLines(SubwayLines subwayLines, String station){
-        List<String> linesWithStation = new ArrayList<String>();
+    public Set<String> getStationLines(SubwayLines subwayLines, String station){
+        Set<String> linesWithStation = new HashSet<String>();
         ArrayList<List<String>> lines = new ArrayList<List<String>>();
         lines.add(subwayLines.A);
         lines.add(subwayLines.B);
@@ -34,9 +36,10 @@ public class StationConnections {
         lines.add(subwayLines.seven);
         for(List<String> line: lines){
             if(line.contains(station)){
-                linesWithStation.add(line.get(0));
+                linesWithStation.addAll(line);
             }
         }
+        linesWithStation.remove(station);
         return linesWithStation;
     }
 }
