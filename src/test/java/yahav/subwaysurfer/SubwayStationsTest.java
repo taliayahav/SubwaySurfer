@@ -38,9 +38,7 @@ public class SubwayStationsTest {
         //given
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("subwaystations.json"));
-        Point2D.Double startPoint = new Point2D.Double(1, 2);
-        double x = startPoint.getX(); //1
-        double y = startPoint.getY(); //2
+        Point2D.Double startPoint = new Point2D.Double(40.7720433, -73.991383);
 
 
         //when
@@ -48,6 +46,6 @@ public class SubwayStationsTest {
         reader.close();
 
         //then
-        //assertEquals();
+        assertEquals(94, user.features.get(93).properties.objectid);
     }
 }
