@@ -25,7 +25,7 @@ public class SubwayLinesTest {
         assertNotNull(user.E);
         assertNotNull(user.E.get(0));
         assertFalse(user.E.isEmpty());
-        assertEquals("29", user.sixExpress.get(0));
-        assertEquals("133", user.two.get(0));
+        assertEquals((Integer) 29, user.sixExpress.get(0));
+        assertEquals((Integer) 133, user.two.get(0));
     }
 }
