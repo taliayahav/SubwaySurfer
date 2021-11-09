@@ -26,6 +26,7 @@ public class StationConnectionsTest {
         SubwayLines user = gson.fromJson(reader, SubwayLines.class);
         reader.close();
 
+
         //then
         Assert.assertEquals(expected, stationConnections.getStationLines(user, "123"));
     }

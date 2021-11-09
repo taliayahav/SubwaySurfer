@@ -1,6 +1,5 @@
 package yahav.subwaysurfer;
 
-//import org.junit.Assert;
 import org.junit.Test;
 import com.google.gson.Gson;
 
@@ -38,14 +37,14 @@ public class SubwayStationsTest {
         //given
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("subwaystations.json"));
-        Point2D.Double startPoint = new Point2D.Double(40.7720433, -73.991383);
-
+        Point2D.Double startPoint = new Point2D.Double(-73.9844575, 40.7701871 ); //mandarin hotel
 
         //when
         SubwayStations user = gson.fromJson(reader, SubwayStations.class);
         reader.close();
 
+
         //then
-        assertEquals(94, user.features.get(93).properties.objectid);
+        assertEquals(94, user.findStartStation(startPoint.getX(),startPoint.getY()).properties.objectid); //columbus circle
     }
 }
