@@ -24,7 +24,7 @@ public class ShortestPathTest {
         reader.close();
         SubwayStations stationUser = gson.fromJson(stationReader, SubwayStations.class);
         stationReader.close();
-        List<SubwayStations.Station> closestPath = new ShortestPath().djikstraAlgorithm(user, stationUser, stationUser.features.get(1), stationUser.features.get(3));
+        //List<SubwayStations.Station> closestPath = new ShortestPath().djikstraAlgorithm(user, stationUser, stationUser.features.get(1), stationUser.features.get(3));
 
         //then
 
