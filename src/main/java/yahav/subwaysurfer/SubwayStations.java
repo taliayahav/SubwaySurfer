@@ -32,7 +32,7 @@ public class SubwayStations {
             }
         }
     }
-    public Station findStartStation(double startLatitude, double startLongitude) {
+    public Station findStation(double startLatitude, double startLongitude) {
         double closestStartDistance = Double.MAX_VALUE;
         SubwayStations.Station closestStation = features.get(0);
         Point2D.Double givenStartPoint = new Point2D.Double(startLatitude, startLongitude);
@@ -45,9 +45,6 @@ public class SubwayStations {
             }
         }
         return closestStation;
-    }
-    public Station findEndStation(double endLatitude, double endLongitude){
-        return findStartStation(endLatitude,endLongitude);
     }
 }
 
