@@ -7,13 +7,9 @@ public class SubwayStations {
     List<Station> features;
 
     static class Station {
-        public List<Station> connections;
         Properties properties;
         Geometry geometry;
-
-        public Station(List<Station> connections) {
-            this.connections = connections;
-        }
+        List<Station> connections;
 
         static class Properties {
             int objectid;
@@ -52,7 +48,6 @@ public class SubwayStations {
     }
     public Station findEndStation(double endLatitude, double endLongitude){
         return findStartStation(endLatitude,endLongitude);
-
     }
 }
 
