@@ -1,26 +1,36 @@
 package yahav.subwaysurfer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class ShortestPath {
     public List<SubwayStations.Station> dijkstraAlgorithm(SubwayLines subwayLines, SubwayStations station, SubwayStations.Station firstStation,
                                                           SubwayStations.Station endStation) {
         StationConnections stationConnections = new StationConnections();
         List<Integer> adjacentStations = null;
-        HashMap<SubwayStations.Station, Integer> stationsWithDistance = null;
-        HashMap<SubwayStations.Station, Integer> previousAdjacentStations = null;
-        HashMap<SubwayStations.Station, Integer> visitedStations = null;
+        HashMap<SubwayStations.Station, Integer> stationsWithDistance = new HashMap<>();
+        HashMap<SubwayStations.Station, Integer> previousAdjacentStations = new HashMap<>();
+        HashMap<SubwayStations.Station, Integer> visitedStations = new HashMap<>();
         List<SubwayStations.Station> stationList = new ArrayList<SubwayStations.Station>();
         initializeStationDistance(previousAdjacentStations, stationList, station, stationsWithDistance, firstStation);
         while(stationsWithDistance.size() >= 1)
         {
             Integer min = Collections.min(stationsWithDistance.values());
+            SubwayStations.Station minStation = null;
+            List<Integer> lowestDistanceStops = new ArrayList<>();
+            if (stationsWithDistance.containsValue(min))
+            {
+                for (Map.Entry<SubwayStations.Station, Integer> entry : stationsWithDistance.entrySet())
+                {
+                    if (entry.getValue().equals(min))
+                    {
+                        minStation = entry.getKey();
+                        break;
+                    }
+                }
+            }
             adjacentStations = stationConnections.getStationLines(subwayLines, min);
             addDistanceToAdjacentStations(min, previousAdjacentStations, adjacentStations, stationsWithDistance, stationList);
-            int indexOfMin = stationList.indexOf(min);
+            int indexOfMin = stationList.indexOf(minStation);
             visitedStations.put(stationList.get(indexOfMin), stationsWithDistance.get(stationList.get(indexOfMin)));
             stationsWithDistance.remove(stationList.get(indexOfMin), stationsWithDistance.get(stationList.get(indexOfMin)));
         }

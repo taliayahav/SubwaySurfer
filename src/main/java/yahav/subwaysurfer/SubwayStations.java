@@ -32,14 +32,14 @@ public class SubwayStations {
             }
         }
     }
-    public Station findStation(double startLatitude, double startLongitude) {
+    public Station findStation(double latitude, double longitude) {
         double closestStartDistance = Double.MAX_VALUE;
         SubwayStations.Station closestStation = features.get(0);
-        Point2D.Double givenStartPoint = new Point2D.Double(startLatitude, startLongitude);
-        for(SubwayStations.Station station : features){
+        Point2D.Double givenStartPoint = new Point2D.Double(latitude, longitude);
+        for (SubwayStations.Station station : features) {
             Point2D.Double stationStartPoint = new Point2D.Double(station.geometry.coordinates.get(0), station.geometry.coordinates.get(1));
             double distance = Point2D.distance(stationStartPoint.x, stationStartPoint.y, givenStartPoint.x, givenStartPoint.y);
-            if(closestStartDistance > distance){
+            if (closestStartDistance > distance) {
                 closestStartDistance = distance;
                 closestStation = station;
             }

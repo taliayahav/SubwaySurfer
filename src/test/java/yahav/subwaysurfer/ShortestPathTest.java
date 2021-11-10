@@ -17,16 +17,16 @@ public class ShortestPathTest {
         //given
 //        Gson gson = new Gson();
 //        Reader reader = Files.newBufferedReader(Paths.get("subwaylines.json"));
-//        Reader stationReader = Files.newBufferedReader(Paths.get("subwaylines.json"));
-
-        //when
+//        Reader stationReader = Files.newBufferedReader(Paths.get("subwaystations.json"));
+//
+//        //when
 //        SubwayLines user = gson.fromJson(reader, SubwayLines.class);
 //        reader.close();
 //        SubwayStations stationUser = gson.fromJson(stationReader, SubwayStations.class);
 //        stationReader.close();
-        //List<SubwayStations.Station> closestPath = new ShortestPath().djikstraAlgorithm(user, stationUser, stationUser.features.get(1), stationUser.features.get(3));
-
-        //then
-
+//        List<SubwayStations.Station> findNearestPath = new ShortestPath().dijkstraAlgorithm(user, stationUser, stationUser.features.get(1), stationUser.features.get(3));
+//
+//        //then
+//        assertEquals(2, findNearestPath.get(0).properties.objectid);
     }
 }
