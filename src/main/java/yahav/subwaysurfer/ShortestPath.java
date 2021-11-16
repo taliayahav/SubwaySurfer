@@ -90,7 +90,7 @@ public class ShortestPath {
                 individualStations = station.features.get(stationCount);
                 for(SubwayStations.Station key : previousAdjacentStations.keySet()){
                     if(key.equals(endStation)) {
-                    if (individualStations.properties.objectid == previousAdjacentStations.get(key)){
+                    if (individualStations.properties.objectid == previousAdjacentStations.keySet().get(key)){
                         previousStation = individualStations;
                         break;
                     }
