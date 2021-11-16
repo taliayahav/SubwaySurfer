@@ -34,7 +34,7 @@ public class ShortestPath {
             visitedStations.put(stationList.get(indexOfMin), stationsWithDistance.get(stationList.get(indexOfMin)));
             stationsWithDistance.remove(stationList.get(indexOfMin), stationsWithDistance.get(stationList.get(indexOfMin)));
         }
-        return findShortestPath(firstStation,endStation,previousAdjacentStations, stationList);
+        return findShortestPath(firstStation,endStation,previousAdjacentStations, stationList, station);
     }
     public void initializeStationDistance(HashMap<SubwayStations.Station, Integer> previousAdjacentStations,
                                           List<SubwayStations.Station> stationList, SubwayStations stations,
@@ -66,6 +66,7 @@ public class ShortestPath {
             SubwayStations.Station previousStation = stationList.get(indexOfPrev);
 
             Integer previousDistance = stationsWithDistance.get(previousStation);
+            //save actual previous station
 
             if (distance > previousDistance + 1) {
                 stationsWithDistance.remove(currentStation, distance);
@@ -78,14 +79,27 @@ public class ShortestPath {
     }
     public List<SubwayStations.Station> findShortestPath(SubwayStations.Station firstStation, SubwayStations.Station endStation,
                                                          HashMap<SubwayStations.Station, Integer> previousAdjacentStations,
-                                                         List<SubwayStations.Station> stationList)
+                                                         List<SubwayStations.Station> stationList, SubwayStations station)
     {
         List<SubwayStations.Station> pathToStartStation = new ArrayList<SubwayStations.Station>();
         SubwayStations.Station previousStation = null;
         pathToStartStation.add(endStation);
+        SubwayStations.Station  individualStations = new SubwayStations.Station();
         do {
-            int indexOfPrevious = stationList.indexOf(previousAdjacentStations.get(endStation));
-            previousStation = stationList.get(indexOfPrevious);
+            for(int stationCount = 0; stationCount < stationList.size(); stationCount++){
+                individualStations = station.features.get(stationCount);
+                for(SubwayStations.Station key : previousAdjacentStations.keySet()){
+                    if(key.equals(endStation)) {
+                    if (individualStations.properties.objectid == previousAdjacentStations.get(key)){
+                        previousStation = individualStations;
+                        break;
+                    }
+                    }
+                }
+            }
+            //int indexOfPrevious = stationList.indexOf(previousAdjacentStations.get(endStation));
+            //put previous station from previousStation
+            //previousStation = stationList.get(indexOfPrevious);
             pathToStartStation.add(previousStation);
         } while(previousStation != firstStation);
         return pathToStartStation;

@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 public class SubwayStations {
-    List<Station> features;
+   public List<Station> features;
 
     static class Station {
         Properties properties;
