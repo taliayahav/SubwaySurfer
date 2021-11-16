@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Set;
 
 public class StationConnections {
-    public Set<String> getStationLines(SubwayLines subwayLines, String station){
-        Set<String> linesWithStation = new HashSet<String>();
-        ArrayList<List<String>> lines = new ArrayList<List<String>>();
+    public List<Integer> getStationLines(SubwayLines subwayLines, Integer station){
+        List<Integer> linesWithStation = new ArrayList<Integer>();
+        ArrayList<List<Integer>> lines = new ArrayList<List<Integer>>();
         lines.add(subwayLines.A);
         lines.add(subwayLines.B);
         lines.add(subwayLines.C);
@@ -22,7 +22,6 @@ public class StationConnections {
         lines.add(subwayLines.N);
         lines.add(subwayLines.Q);
         lines.add(subwayLines.R);
-        lines.add(subwayLines.S);
         lines.add(subwayLines.W);
         lines.add(subwayLines.Z);
         lines.add(subwayLines.sixExpress);
@@ -34,18 +33,22 @@ public class StationConnections {
         lines.add(subwayLines.five);
         lines.add(subwayLines.six);
         lines.add(subwayLines.seven);
-        for(List<String> line: lines){
-            if(line.contains(station)){
-                int index=line.indexOf(station);
-                if(index > 0){
-                    linesWithStation.add(line.get(index-1));
-                }
-                if(index < line.size() - 1){
-                    linesWithStation.add(line.get(index + 1));
-                }
+        for(List<Integer> line: lines){
+            if(line.contains(station)) {
+                int index = line.indexOf(station);
+                addToList(station, linesWithStation, line, index+1);
+                addToList(station, linesWithStation, line, index-1);
             }
         }
         linesWithStation.remove(station);
         return linesWithStation;
+    }
+
+    private void addToList(Integer station, List<Integer> linesWithStation, List<Integer> line, int index) {
+        if (index > 0 && index < line.size()-2) {
+            if (!linesWithStation.contains(line.get(index))) {
+                linesWithStation.add(line.get(index));
+            }
+        }
     }
 }

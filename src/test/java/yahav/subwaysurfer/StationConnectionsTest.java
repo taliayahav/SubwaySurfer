@@ -8,8 +8,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class StationConnectionsTest {
 
@@ -19,15 +18,15 @@ public class StationConnectionsTest {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("subwaylines.json"));
         StationConnections stationConnections = new StationConnections();
-        Set<String> expected = new HashSet<String>();
-        expected.add("128");
-        expected.add("419");
+        List<Integer> expected = new ArrayList<Integer>(Arrays.asList(419, 128));
+        List<Integer> actual = new ArrayList<Integer>();
 
         //when
         SubwayLines user = gson.fromJson(reader, SubwayLines.class);
         reader.close();
+        actual = stationConnections.getStationLines(user, 123);
 
         //then
-        Assert.assertEquals(expected, stationConnections.getStationLines(user, "123"));
+        Assert.assertEquals(expected, actual);
     }
 }

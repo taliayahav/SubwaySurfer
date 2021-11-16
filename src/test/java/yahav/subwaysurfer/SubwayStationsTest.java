@@ -1,16 +1,15 @@
 package yahav.subwaysurfer;
 
-import org.junit.Assert;
 import org.junit.Test;
 import com.google.gson.Gson;
 
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class SubwayStationsTest {
@@ -20,16 +19,32 @@ public class SubwayStationsTest {
     public void getStations() throws IOException {
         //given
         Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("subwaylines.json"));
+        Reader reader = Files.newBufferedReader(Paths.get("subwaystations.json"));
 
         //when
-        SubwayLines user = gson.fromJson(reader, SubwayLines.class);
+        SubwayStations user = gson.fromJson(reader, SubwayStations.class);
         reader.close();
 
         //then
-        Assert.assertEquals("55", user.A.get(0));
-        Assert.assertNotNull(user.E);
-        Assert.assertNotNull(user.E.get(0));
-        assertFalse(user.E.isEmpty());
+        assertEquals("Astor Pl", user.features.get(0).properties.name);
+        assertEquals(1, user.features.get(0).properties.objectid);
+        assertEquals(-73.99106999861966, user.features.get(0).geometry.getCoordinates().get(0));
+        assertEquals(40.73005400028978, user.features.get(0).geometry.getCoordinates().get(1));
+    }
+
+    @Test
+    public void findStartStation() throws IOException{
+        //given
+        Gson gson = new Gson();
+        Reader reader = Files.newBufferedReader(Paths.get("subwaystations.json"));
+        Point2D.Double startPoint = new Point2D.Double(-73.9844575, 40.7701871 ); //mandarin hotel
+
+        //when
+        SubwayStations user = gson.fromJson(reader, SubwayStations.class);
+        reader.close();
+
+
+        //then
+        assertEquals(94, user.findStation(startPoint.getX(),startPoint.getY()).properties.objectid); //columbus circle
     }
 }

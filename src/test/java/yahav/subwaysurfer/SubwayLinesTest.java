@@ -1,8 +1,6 @@
 package yahav.subwaysurfer;
 
 import com.google.gson.Gson;
-import junit.framework.TestCase;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -10,7 +8,7 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class SubwayLinesTest {
     @Test
@@ -24,8 +22,10 @@ public class SubwayLinesTest {
         reader.close();
 
         //then
-        Assert.assertNotNull(user.E);
-        Assert.assertNotNull(user.E.get(0));
+        assertNotNull(user.E);
+        assertNotNull(user.E.get(0));
         assertFalse(user.E.isEmpty());
+        assertEquals((Integer) 29, user.sixExpress.get(0));
+        assertEquals((Integer) 133, user.two.get(0));
     }
 }

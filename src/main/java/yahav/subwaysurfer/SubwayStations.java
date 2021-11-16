@@ -1,33 +1,51 @@
 package yahav.subwaysurfer;
 
+import java.awt.geom.Point2D;
 import java.util.List;
 
 public class SubwayStations {
-    List<Station> features;
+   public List<Station> features;
 
-    public static class Station {
+    static class Station {
         Properties properties;
         Geometry geometry;
+        List<Station> connections;
+
+        static class Properties {
+            int objectid;
+            String name;
+
+            public int getObjectID() {
+                return objectid;
+            }
+
+            public String getName() {
+                return name;
+            }
+        }
+
+        static class Geometry {
+            List<Double> coordinates;
+
+            public List getCoordinates() {
+                return coordinates;
+            }
+        }
     }
-
-    static class Properties {
-        String objectid;
-        String name;
-
-        public String getObjectID() {
-            return objectid;
+    public Station findStation(double latitude, double longitude) {
+        double closestStartDistance = Double.MAX_VALUE;
+        SubwayStations.Station closestStation = features.get(0);
+        Point2D.Double givenStartPoint = new Point2D.Double(latitude, longitude);
+        for (SubwayStations.Station station : features) {
+            Point2D.Double stationStartPoint = new Point2D.Double(station.geometry.coordinates.get(0), station.geometry.coordinates.get(1));
+            double distance = Point2D.distance(stationStartPoint.x, stationStartPoint.y, givenStartPoint.x, givenStartPoint.y);
+            if (closestStartDistance > distance) {
+                closestStartDistance = distance;
+                closestStation = station;
+            }
         }
-
-        public String getName() {
-            return name;
-        }
-    }
-
-    static class Geometry {
-        List<Double> coordinates;
-
-        public List getCoordinates() {
-            return coordinates;
-        }
+        return closestStation;
     }
 }
+
+

@@ -6,38 +6,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubwayLines {
-    List<String> A;
-    List<String> B;
-    List<String> C;
-    List<String> D;
-    List<String> E;
-    List<String> F;
-    List<String> G;
-    List<String> J;
-    List<String> L;
-    List<String> M;
-    List<String> N;
-    List<String> Q;
-    List<String> R;
-    List<String> S;
-    List<String> W;
-    List<String> Z;
+    List<Integer> A;
+    List<Integer> B;
+    List<Integer> C;
+    List<Integer> D;
+    List<Integer> E;
+    List<Integer> F;
+    List<Integer> G;
+    List<Integer> J;
+    List<Integer> L;
+    List<Integer> M;
+    List<Integer> N;
+    List<Integer> Q;
+    List<Integer> R;
+    List<Integer> W;
+    List<Integer> Z;
     @SerializedName("6 Express")
-    List<String> sixExpress;
+    List<Integer> sixExpress;
     @SerializedName("7 Express")
-    List<String> sevenExpress;
+    List<Integer> sevenExpress;
     @SerializedName("1")
-    List<String> one;
+    List<Integer> one;
     @SerializedName("2")
-    List<String> two;
+    List<Integer> two;
     @SerializedName("3")
-    List<String> three;
+    List<Integer> three;
     @SerializedName("4")
-    List<String> four;
+    List<Integer> four;
     @SerializedName("5")
-    List<String> five;
+    List<Integer> five;
     @SerializedName("6")
-    List<String> six;
+    List<Integer> six;
     @SerializedName("7")
-    List<String> seven;
+    List<Integer> seven;
 }
